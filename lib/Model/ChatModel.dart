@@ -1,3 +1,5 @@
+import 'package:chatapp/Model/MessageModel.dart';
+
 class ChatModel {
   String name;
   String icon;
@@ -7,6 +9,7 @@ class ChatModel {
   String status;
   bool select = false;
   int id;
+  List<MessageModel> messageList = [];
   ChatModel({
     this.name,
     this.icon,
@@ -16,5 +19,6 @@ class ChatModel {
     this.status,
     this.select = false,
     this.id,
+    this.messageList
   });
 }

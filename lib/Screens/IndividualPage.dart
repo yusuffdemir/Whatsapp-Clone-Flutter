@@ -43,7 +43,7 @@ class _IndividualPageState extends State<IndividualPage> {
 
   void connect() {
     // MessageModel messageModel = MessageModel(sourceId: widget.sourceChat.id.toString(),targetId: );
-    socket = IO.io("http://192.168.0.106:5000", <String, dynamic>{
+    socket = IO.io("http://192.168.1.109:5000", <String, dynamic>{
       "transports": ["websocket"],
       "autoConnect": false,
     });
@@ -51,18 +51,26 @@ class _IndividualPageState extends State<IndividualPage> {
     socket.emit("signin", widget.sourchat.id);
     socket.onConnect((data) {
       print("Connected");
+      print(data);
       socket.on("message", (msg) {
-        print(msg);
+        print("MESAJ = $msg");
         setMessage("destination", msg["message"]);
         _scrollController.animateTo(_scrollController.position.maxScrollExtent,
             duration: Duration(milliseconds: 300), curve: Curves.easeOut);
       });
     });
-    print(socket.connected);
+    print("LİST : ${widget.chatModel.messageList}");
+    for(var data in widget.chatModel.messageList){
+      setMessage(data.type, data.message);
+    }
   }
 
   void sendMessage(String message, int sourceId, int targetId) {
     setMessage("source", message);
+    widget.chatModel.messageList.add(MessageModel(
+        type: "source",
+        message: message,
+        time: DateTime.now().toString().substring(10, 16)));
     socket.emit("message",
         {"message": message, "sourceId": sourceId, "targetId": targetId});
   }

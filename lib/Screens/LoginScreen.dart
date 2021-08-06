@@ -20,6 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
       time: "4:00",
       icon: "person.svg",
       id: 1,
+      messageList: []
     ),
     ChatModel(
       name: "Kishor",
@@ -28,6 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
       time: "13:00",
       icon: "person.svg",
       id: 2,
+        messageList: []
     ),
 
     ChatModel(
@@ -37,6 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
       time: "8:00",
       icon: "person.svg",
       id: 3,
+        messageList: []
     ),
 
     ChatModel(
@@ -46,6 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
       time: "2:00",
       icon: "person.svg",
       id: 4,
+        messageList: []
     ),
 
     // ChatModel(
